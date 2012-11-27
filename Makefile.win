@@ -1,0 +1,36 @@
+# Project: proyectoDatos
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = "main\ fltk2.o" tinyxml2/tinyxml2.o creararch.o $(RES)
+LINKOBJ  = "main fltk2.o" tinyxml2/tinyxml2.o creararch.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -L"C:/Users/Albin/Desktop/tarea c" -mwindows -lfltk -lole32 -luuid -lcomctl32 -lwsock32 -lm  
+INCS =  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Dev-Cpp/include"  -I"C:/Users/Albin/Desktop/tarea c" 
+BIN  = fltk2.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS) -DWIN32 -mms-bitfields  
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before fltk2.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "fltk2.exe" $(LIBS)
+
+"main\ fltk2.o": main\ fltk2.cxx
+	$(CPP) -c "main fltk2.cxx" -o "main fltk2.o" $(CXXFLAGS)
+
+tinyxml2/tinyxml2.o: tinyxml2/tinyxml2.cpp
+	$(CPP) -c tinyxml2/tinyxml2.cpp -o tinyxml2/tinyxml2.o $(CXXFLAGS)
+
+creararch.o: creararch.cpp
+	$(CPP) -c creararch.cpp -o creararch.o $(CXXFLAGS)
